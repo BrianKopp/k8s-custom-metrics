@@ -43,3 +43,19 @@ app.put('/value', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => console.log('listening on port ' + PORT));
+
+const stop = () => {
+    console.log('stopping server');
+    server.close((err) => {
+        if (err) {
+            console.error('there was an error closing the server', err);
+            process.exit(1);
+        } else {
+            console.log('server stopped successfully!');
+            process.exit(0);
+        }
+    });
+};
+
+process.on('SIGINT', stop);
+process.on('SIGTERM', stop);
