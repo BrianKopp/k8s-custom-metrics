@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: per-pod-metric
+  namespace: hpa
+spec:
+  selector:
+    matchLabels:
+      app: per-pod-metric
+  template:
+    metadata:
+      labels:
+        app: per-pod-metric
+    spec:
+      containers:
+      - name: per-pod-metric
+        image: briankopp/per-pod-metrics:0.0.2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
