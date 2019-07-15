@@ -2,7 +2,9 @@ FROM node:10.15-alpine
 
 ENV NODE_ENV production
 
-RUN mkdir /usr/app
+RUN mkdir /usr/app && \
+    mkdir /usr/app/node_modules && \
+    chown -R node:node /usr/app
 
 WORKDIR /usr/app
 
@@ -12,6 +14,6 @@ RUN npm install --production
 
 USER node
 
-ADD ./src/ ./
+ADD ./src/ ./src/
 
-CMD ["node", "src/index.js"]
+ENTRYPOINT ["node", "src/index.js"]
