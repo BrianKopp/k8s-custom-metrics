@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: per-pod-metric
-        image: briankopp/per-pod-metrics:0.0.2
+        image: briankopp/per-pod-metrics:0.0.3
         resources:
           limits:
             memory: "128Mi"
