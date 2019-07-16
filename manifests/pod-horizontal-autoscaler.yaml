@@ -14,7 +14,7 @@ spec:
   - type: Pods
     pods:
       metric:
-        name: socket-connections
+        name: current_connections
       target:
         type: AverageValue
         averageValue: 250
