@@ -11,6 +11,10 @@ spec:
     metadata:
       labels:
         app: per-pod-metric
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3000'
+        prometheus.io/path: '/metrics'
     spec:
       containers:
       - name: per-pod-metric
