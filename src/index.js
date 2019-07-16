@@ -15,8 +15,9 @@ const app = express();
 app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Hello from per-pod-metric pod!'));
 app.get('/metrics', (req, res) => {
+    const results = promClient.register.metrics();
     res.set('Content-Type', promClient.register.contentType);
-    res.set(promClient.register.metrics());
+    res.send(results);
 });
 
 app.get('/value', (req, res) => {
